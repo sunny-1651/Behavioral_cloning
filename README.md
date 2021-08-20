@@ -42,7 +42,7 @@ The model.py file contains the code for training and saving the convolution neur
 #### 1. An appropriate model architecture has been employed
 
 The base of my model is inspireed from LeNet with additional normalization layer, cropping layer and dropout layer.
-![My Model](asetss/model.jpg "Model flow")
+![My Model](assets/model.jpg "Model flow")
 
 
 #### 2. Attempts to reduce overfitting in the model
@@ -103,4 +103,5 @@ Right camera image and its flip:
 
 
 The final result of my model is like this. 
+
 ![Result_GIF](assets/result.gif "final")
