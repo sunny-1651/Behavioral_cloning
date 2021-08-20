@@ -35,13 +35,13 @@ model.h5 is saved with keras and tensorlow Please make sure you're running with 
 
 #### 3. Submission code is usable and readable
 
-The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model (I have used a very old laptop so my library versions are a bit old).
+The model.py file contains the code for training and saving the convolution neural network. This file shows the pipeline that I have used for training and validating the model (I have used a very old laptop so my library versions are a bit old).
 
 ### Model Architecture and Training Strategy
 
 #### 1. An appropriate model architecture has been employed
 
-The basic of my model is LeNet with additional normalization layer, cropping layer and dropout layer.
+The base of my model is inspireed from LeNet with additional normalization layer, cropping layer and dropout layer.
 ![My Model](pics/model.jpg "Model flow")
 
 
@@ -51,32 +51,23 @@ The model contains dropout layers in order to reduce overfitting.
 
 #### 3. Model parameter tuning
 
-The model used an adam optimizer, so the learning rate was not tuned manually.
+The model used an adam optimizer, so there was no need to set learning rate or any other parameters manually.
 
 #### 4. Appropriate training data
 
-I believe the training data plays the major role in this exercises. I employed all the data augmentation suggestions in the project resources. I use three cameras, image flipping, image cropping and image normalization.
-
-I also use generator to avoid OOM problem. 
+According to me the architecture of model and the data fed to it plays the most important role (for this project). I have employed all the data augmentations suggestions in the project resources, three cameras, image flipping, image cropping and image normalization.
 
 ### Model Architecture and Training Strategy
 
 #### 1. Solution Design Approach
 
-Initially, I thought the problem would require a complicated model so I ran a CNN with two convo2d layers, each 32 and 64 depth. The result is a model.h5 of size 600Mb and not performing well at all. After a few more attempt at tweaking and failed to improve the model, I reviewed the videos and decided to try with LeNet and better training data. 
-
-I followed all suggestions from the project resources:
-
-- image normalization
-- image cropping
-- using three camera
-- using generator to avoid OOM
+Initially, I thought the problem would require a complicated model so I ran a CNN with six convo2d layers, with depth 32, 64, 128, 128, 256, 256 respectively. The result is a model.h5 of size more than half a GB, which still shitted the bed. After about a dozen failed attempts at tuning I finally arrived at this model. Although reviewing the videos only I decided to go with LeNet and create a better training dataset. 
 
 Then I trained the model for 20 epoch and the vehicle is able to drive around the track without leaving the road.
 
 #### 2. Final Model Architecture
 
-The final model architecture (model.py lines 18-24) consisted of a convolution neural network with the following layers:
+The final model architecture consisted of a convolution neural network with the following layers:
 - A Cropping layer to crop the top of input images.
 - A Lambda layer to normalize the pixal value.
 - Two consecutive Convo2D layers with 6 x (5,5) layers with 'relu' activation and 2x2 maxpooling.
@@ -96,15 +87,15 @@ The training data is cropped top and bottom, then flipped. Examples of training 
 
 Center camera image and its flip:
 
-![Center camera](examples/center_2016_12_01_13_30_48_287_crop.jpg "original")
-![Center camera](examples/center_2016_12_01_13_30_48_287_flip.jpg "flip")
+![Center camera](pics/center_1.jpg "original")
+![Center camera](pics/center_2.jpg "flip")
 
 Left camera image and its flip:
 
-![Center camera](examples/left_2016_12_01_13_30_48_287_crop.jpg "original")
-![Center camera](examples/left_2016_12_01_13_30_48_287_flip.jpg "flip")
+![Center camera](examples/left_2.jpg "original")
+![Center camera](examples/left_3.jpg "flip")
 
 Right camera image and its flip:
 
-![Center camera](examples/right_2016_12_01_13_30_48_287_crop.jpg "original")
-![Center camera](examples/right_2016_12_01_13_30_48_287_flip.jpg "flip")
+![Center camera](examples/right_2.jpg "original")
+![Center camera](examples/right_3.jpg "flip")
